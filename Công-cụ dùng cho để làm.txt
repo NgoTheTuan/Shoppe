@@ -1,0 +1,2 @@
+ normalizer css cdn: reset lại css- các thẻ mặc định sẽ có 1 khoảng cách tự có sẵn, 
+			đặt để đảm bảo trên mọi trình duyệt đều oke

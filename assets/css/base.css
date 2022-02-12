@@ -1,0 +1,246 @@
+/* Viết các css để dùng chung*/
+
+:root{
+    --primary-color:#ee4d2d;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border--color:#dbdbdb;
+    --gold-color:#FFCE3E;
+
+    --header-height:120px;
+    --navbar-height:30px;
+    --header-width-search-height:calc(var(--header-height) - var(--navbar-height));
+    --header-sort-bar-height:46px;
+}
+
+*{
+    box-sizing: inherit;/*Thừa kế thuộc tính box-sizing của cha nó*/
+
+}
+
+
+html{
+    font-size: 62.5%; /* Khi đó 1rem = 10px. Suy ra 12px = 1.2rem*/
+    line-height: 1.6rem/*= 16px*/;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;/*thẻ html là to nhất suy ra mọi thàng có thuộc tính 
+                            box-sizing đều kế thừa và có là: border-box do 
+                            ở trên * có inherit*/
+}
+
+
+/* Reponsive */
+
+.grid__row{
+    display: flex;
+    flex-wrap: wrap; /*tổng độ dài các thằng con mà > thằng cha thì tự động xuống dòng*/
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+/* Test */
+.grid__column-2{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.6667%;
+}
+
+.grid__column-2-4{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+}
+
+.grid__column-10{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 83.3334%;
+}
+
+
+/* Animation */
+@keyframes fadeIn{
+   from{
+    opacity: 0;
+   }
+   to{
+    opacity: 1;
+   }
+}
+
+@keyframes growth  {
+    from{
+        transform: scale(var(--growth--from));
+        opacity: 0;
+       }
+       to{
+        transform: scale(var(--growth--to));
+        opacity: 1;
+       }
+}
+
+
+/* Modal */
+.modal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    animation: fadeIn linear 0.1s;
+}
+
+.modal__overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal__body{
+    --growth--to:100%;
+    --growth--from: 70%;
+    margin: auto;
+    z-index: 1;
+    animation: growth linear 0.25s;
+}
+
+/* Button style */
+.btn{
+    min-width: 124px;
+    height: 36px;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.4rem;
+    padding: 0  12px;
+    outline: none;
+    cursor: pointer;
+    color: var(--text-color);
+    background-color: var(--white-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.btn.btn--nomal:hover{
+    background-color: rgba(0, 0, 0, 0.07);
+}
+
+.btn.btn--size-s{
+    height: 30px;
+    font-size: 12px;
+    padding: 0 10px;
+
+}
+
+.btn.btn--primary{ /*Viết sát như vậy nghĩa là thẻ đó phải 
+                    có cả 2 class đó thì mới nhận css này*/
+    color: var(--white-color);
+    background-color: var(--primary-color);
+   
+}
+
+.btn.btn--disabled{ 
+    cursor: default;
+}
+
+/* Select */
+
+.select-input{
+    position: relative;
+    min-width: 200px;
+    height:34px;
+    background-color: var(--white-color);
+    border-radius: 2px;
+    padding: 0  12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.select-input:hover .select-input__list{
+    display: block;
+}
+
+.select-input__lable{
+    font-size: 1.4rem;
+}
+
+.select-input__icon{
+    font-size: 1.4rem;
+    color: #4a4a4a;
+    position: relative;
+    top: 1px;
+}
+
+.select-input__list{
+    margin: 0;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+    background-color: var(--white-color);
+    box-shadow:0 0px 10px 0 rgb(0 0 0 / 10%);
+    padding: 8px 16px;
+    list-style: none;
+    display: none;
+    border-radius: 2px;
+    
+    z-index: 1;
+
+}
+
+.select-input__link{
+    font-size: 1.4rem;
+    color:var(--text-color);
+    text-decoration:none;
+    display: block;
+    padding: 8px  8px;
+}
+
+.select-input__link:hover{
+
+    color:var(--primary-color);
+
+}
+
+/* Pagination */
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.pagination-item {
+    margin: 0 14px;
+}
+
+.pagination-item--active .pagination-item__link{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.pagination-item--active .pagination-item__link:hover{
+    background-color: #f56b4f;
+}
+
+.pagination-item__link {
+    --height: 30px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #939393;
+    min-width: 40px;
+    height: var(--height);
+    line-height: var(--height);
+    border-radius:2px;
+}
